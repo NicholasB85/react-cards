@@ -1,17 +1,26 @@
 import React from 'react';
 
-/*
- * CardGroup
- * This component takes Card components as children and renders them.
- * Example usage:
- *
- *      <CardGroup>
- *          <Card description="Trial" icon="fa-thumbs-o-up" price="Free!" />
- *      </CardGroup>
- *
- * The above would render a card group with a single child in it.
- *
- */
+const cardData = [{
+    description: "Trial",
+    icon:"fa-thumbs-o-up",
+    price:"Free!"
+},
+{
+    description: "Basic tier",
+    hint:"(most popular)",
+    icon:"fa-trophy",
+    price:"$10.00" 
+},
+{
+    description: "Advanced tier",
+    hint:"(only for enterprise-level professionals)",
+    icon:"fa-bolt",
+    price:"$6,000.00" 
+}
+];
+
+
+
 const CardGroup = (props) => (
     <div className="cardGroup">
         {props.children}
@@ -34,20 +43,11 @@ const Card = (props) => (
 
 const App = () => (
     <CardGroup>
-        <Card description = "Trial" 
-        icon = "fa-thumbs-o-up"
-        price = "Free!"></Card>
-
-        <Card description = "Basic tier" 
-        hint = "(most popular)"
-        icon = "fa-trophy"
-        price = "$10.00"></Card>
-
-        <Card description = "Advanced tier" 
-        hint = "(only for enterprise-level professionals)"
-        icon = "fa-bolt"
-        price = "$6,000.00"></Card>
-        
+       {cardData.map(card => <Card description = {card.description} 
+       hint = {card.hint}
+       icon ={card.icon}
+       price ={card.price}
+       ></Card>)}
         </CardGroup>
 );
 
